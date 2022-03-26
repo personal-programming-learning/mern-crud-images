@@ -1,13 +1,9 @@
-import express from 'express';
-const app = express();
+import app from "./src/app.js";
+import { PORT } from "./src/helper/config.js";
+import { connectDB } from "./src/connection/db.js";
 
-import postsRoutes from './src/routes/posts.routes.js'
+connectDB();
 
-app.use('/posts', postsRoutes);
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Soy un mensaje de la ruta /' })
-})
-
-app.listen(3000);
-console.log('Server in running port', 3000)
+app.listen(PORT);
+console.log('Server in running port', PORT)
